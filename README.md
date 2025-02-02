@@ -1,8 +1,11 @@
 Tecnologias Utilizadas
+
 Python
   Selenium(automação web)
+  
   Pandas(mmanipulaçãod e dados)
-Micrsoft Edge WebDriver(navegador)
+  
+  Micrsoft Edge WebDriver(navegador)
 
 Estrutura do Projeto
 Automacao
