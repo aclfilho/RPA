@@ -14,8 +14,11 @@ driver = webdriver.Edge()
 url = "https://www.bcb.gov.br/"
 driver.get(url)
 
-XPATH_DOLAR = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[1]/tbody/tr[2]/td[2]/span'
-XPATH_EURO = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[2]/tbody/tr[2]/td[2]/span'
+XPATH_DOLAR_COMPRA = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[1]/tbody/tr[2]/td[2]/span'
+XPATH_DOLAR_VENDA = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[1]/tbody/tr[2]/td[3]/span'
+XPATH_EURO_COMPRA = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[2]/tbody/tr[2]/td[2]/span'
+XPATH_EURO_VEMDA = '//*[@id="home"]/div/div[1]/div[1]/div/cotacao/table[2]/tbody/tr[2]/td[3]/span'
+
 
 # def para formatar a cotação para float
 def formatar_cotacao(valor):
@@ -23,17 +26,22 @@ def formatar_cotacao(valor):
 
 try:
     #encontrando cotação do dolar
-    cotacao_dolar = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, XPATH_DOLAR))).text
+    cotacao_dolar_compra = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, XPATH_DOLAR_COMPRA))).text
+    cotacao_dolar_venda = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, XPATH_DOLAR_VENDA))).text
 
     #encontrando cotação do euro
-    cotacao_euro = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, XPATH_EURO))).text
+    cotacao_euro_compra = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, XPATH_EURO_COMPRA))).text
+    cotacao_euro_venda = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, XPATH_EURO_VEMDA))).text
 
     #criar um dataframe
     dados = pd.DataFrame({
         "Moeda": ["Dólar", "Euro"],
-        "Cotação": [formatar_cotacao(cotacao_dolar), formatar_cotacao(cotacao_euro)]        
+        "Compra": [formatar_cotacao(cotacao_dolar_compra), formatar_cotacao(cotacao_euro_compra)],
+        "Venda": [formatar_cotacao(cotacao_dolar_venda), formatar_cotacao(cotacao_euro_venda)]
     })
 
     #salvando em execel(xlsx)
