@@ -3,16 +3,19 @@ Tecnologias Utilizadas
 Python
   Selenium(automação web)
   
-  Pandas(mmanipulaçãod e dados)
+  Pandas(manipulação de dados)
   
   Micrsoft Edge WebDriver(navegador)
 
 Estrutura do Projeto
 Automacao
-│── RPA.py                # Script principal de automação
-│── cotacoes.xlsx          # Arquivo gerado com as cotações
-│── README.md              # Documentação do projeto
-│── requirements.txt       # Dependências do projeto
+RPA.py                # Script principal de automação
+
+cotacoes.xlsx          # Arquivo gerado com as cotações
+
+README.md              # Documentação do projeto
+
+requirements.txt       # Dependências do projeto
 
 1- Instalar e Executar
 git clone https://github.com/seu-usuario/Automacao_Cotacoes.git
